@@ -20,6 +20,9 @@ public class StudentController {
 
 	@GetMapping
 	public List<Student> getStudents(){
-		return studentService.getStudents();
+		List<Student> myList = studentService.getStudents();
+		System.out.println("Age no service: " + myList.get(0).age); // null
+        System.out.println("GetAge no service: " + myList.get(0).getAge()); // 25
+		return myList;
 	}
 }

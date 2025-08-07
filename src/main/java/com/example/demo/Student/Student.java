@@ -1,6 +1,7 @@
 package com.example.demo.Student;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table
@@ -23,33 +25,31 @@ public class Student {
 		strategy = GenerationType.SEQUENCE,
 		generator = "student_sequence"
 	)
-	private Long Id;
-	private String Email;
-	private String Name;
-	private int Age;
-	private LocalDate DateOfBirthday;
+	private Long id;
+	private String email;
+	private String name;
+
+	@Transient
+	public Integer age;
+	private LocalDate dateOfBirthday;
 
 	//Constructors
 	public Student(String email, 
 					String name, 
-					int age, 
 					LocalDate dateOfBirthday) {
-		Email = email;
-		Name = name;
-		Age = age;
-		DateOfBirthday = dateOfBirthday;
+		this.email = email;
+		this.name = name;
+		this.dateOfBirthday = dateOfBirthday;
 	}
 
 	public Student(Long id, 
 				 	String email, 
 					String name, 
-					int age, 
 					LocalDate dateOfBirthday) {
-		Id = id;
-		Email = email;
-		Name = name;
-		Age = age;
-		DateOfBirthday = dateOfBirthday;
+		this.id = id;
+		this.email = email;
+		this.name = name;
+		this.dateOfBirthday = dateOfBirthday;
 	}
 	
 
@@ -58,40 +58,39 @@ public class Student {
 	
 	// Getters
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 	public String getName() {
-		return Name;
+		return name;
 	}
 	public int getAge() {
-		return Age;
+		return Period.between(dateOfBirthday, LocalDate.now()).getYears();
 	}
 	public LocalDate getDateOfBirthday() {
-		return DateOfBirthday;
+		return dateOfBirthday;
 	}
 
 	// Setters
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 	public void setAge(int age) {
-		Age = age;
+		this.age = age;
 	}
 	public void setDateOfBirthday(LocalDate dateOfBirthday) {
-		DateOfBirthday = dateOfBirthday;
+		this.dateOfBirthday = dateOfBirthday;
 	}
 
 	@Override
 	public String toString() {
 		return "Student [Id=" + 
-				Id + ", Email=" + 
-				Email + ", Name=" + 
-				Name + ", Age=" + 
-				Age + ", DateOfBirthday="+
-				DateOfBirthday + "]";
+				id + ", Email=" + 
+				email + ", Name=" + 
+				name + ", Age=" + 
+				age + ", DateOfBirthday="+
+				dateOfBirthday + "]";
 	}
-	
 }
