@@ -30,7 +30,7 @@ public class Student {
 	private String name;
 
 	@Transient
-	public Integer age;
+	private Integer age;
 	private LocalDate dateOfBirthday;
 
 	//Constructors
@@ -86,11 +86,11 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [Id=" + 
-				id + ", Email=" + 
-				email + ", Name=" + 
-				name + ", Age=" + 
-				age + ", DateOfBirthday="+
+		return "Student [id=" + 
+				id + ", email=" + 
+				email + ", name=" + 
+				name + ", age=" + 
+				age + ", dateOfBirthday="+
 				dateOfBirthday + "]";
 	}
 }

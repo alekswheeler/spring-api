@@ -3,7 +3,11 @@ package com.example.demo.Student;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,8 +25,18 @@ public class StudentController {
 	@GetMapping
 	public List<Student> getStudents(){
 		List<Student> myList = studentService.getStudents();
-		System.out.println("Age no service: " + myList.get(0).age); // null
-        System.out.println("GetAge no service: " + myList.get(0).getAge()); // 25
 		return myList;
+	}
+
+	@PostMapping
+	public void postNewStudent(@RequestBody Student student){
+		studentService.addNewStudent(student);
+	}
+
+
+	@DeleteMapping("/{studentId}")
+	public void deleteStudent(
+			@PathVariable("studentId") Long studentId){
+		studentService.deleteStudent(studentId);
 	}
 }
