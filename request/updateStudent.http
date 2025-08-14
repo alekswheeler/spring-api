@@ -1,0 +1,2 @@
+PUT http://localhost:8082/api/v1/student/1?name=alexo%liveira&email=alex@gmail.com HTTP/1.1
+content-type: application/json
