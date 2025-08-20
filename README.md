@@ -147,11 +147,9 @@ curl -X PUT http://localhost:8080/api/v1/student/1 \
 ### 🐳 Docker
 - [ ] Containerização da aplicação
 - [ ] Docker Compose com PostgreSQL
-- [ ] Configuração para diferentes ambientes
 
 ### 🔐 Segurança
-- [ ] Implementação de autenticação JWT
-- [ ] Autorização baseada em roles
+- [ ] Implementação de autenticação JW
 - [ ] Validação de entrada de dados
 
 ### 🧪 Testes
