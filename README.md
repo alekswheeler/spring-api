@@ -55,7 +55,21 @@ cd spring-api
 ```
 
 ### 2. Configure o banco de dados
-Crie um banco PostgreSQL chamado `student` e configure o `application.properties`:
+
+A aplicação está usando docker para usar postgreSQL local. Basta subir o container com o comando:
+
+  ```docker-compose --env-file ../../.env -f dev/docker/docker-compose.yml up```
+
+
+E para parar:
+
+  ```docker-compose --env-file ../../.env -f dev/docker/docker-compose.yml down```
+
+Para derrubar e limpar tudo:
+
+  ```docker-compose --env-file ../../.env -f dev/docker/docker-compose.yml down -v```
+
+As configurações estão no .env.example, basta copiar para o seu .env na raiz do projeto.
 
 ```properties
 # Configuração do banco PostgreSQL
@@ -76,7 +90,7 @@ spring.jpa.properties.hibernate.format_sql=true
 mvn spring-boot:run
 ```
 
-A API estará disponível em: `http://localhost:8080`
+A API estará disponível em: `http://localhost:8082`
 
 ## 🔗 Endpoints da API
 
@@ -146,10 +160,10 @@ curl -X PUT http://localhost:8080/api/v1/student/1 \
 
 ### 🐳 Docker
 - [ ] Containerização da aplicação
-- [ ] Docker Compose com PostgreSQL
+- [x] Docker Compose com PostgreSQL
 
 ### 🔐 Segurança
-- [ ] Implementação de autenticação JW
+- [ ] Implementação de autenticação JWT
 - [ ] Validação de entrada de dados
 
 ### 🧪 Testes
